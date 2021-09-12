@@ -17,3 +17,20 @@ SELECT * FROM student;
 INSERT INTO student VALUES(1, 'Atharva','Civil Engineering', '8.54');
 INSERT INTO student(student_id, name, major) VALUES(2, 'Ashutosh', 'IT');
 
+
+
+// Useful Keywords
+
+CREATE TABLE student(
+    student_id INT AUTO_INCREMENT,
+    name VARCHAR(20) NOT NULL,
+    major VARCHAR(20) Unique,
+    gpa DECIMAL(3,2) DEFAULT '7.0',
+    PRIMARY KEY(student_id)
+);
+
+SELECT * FROM student;
+
+INSERT INTO student VALUES(1, 'Atharva','Civil Engineering', '8.54');
+INSERT INTO student(name, major) VALUES('Ashutosh', 'IT');
+

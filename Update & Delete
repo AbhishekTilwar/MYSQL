@@ -1,0 +1,26 @@
+// Update
+CREATE TABLE student(
+    student_id INT AUTO_INCREMENT,
+    name VARCHAR(20) NOT NULL,
+    major VARCHAR(20),
+    gpa DECIMAL(3,2) DEFAULT '7.0',
+    PRIMARY KEY(student_id)
+);
+
+SELECT * FROM student;
+
+INSERT INTO student(name, major, gpa) VALUES('Ashutosh', 'IT', 9.8);
+INSERT INTO student(name, major, gpa) VALUES('Omkar', 'Comp', 9.5);
+INSERT INTO student(name, major, gpa) VALUES('Dimpesh', 'Ent', 8.1);
+INSERT INTO student(name, major, gpa) VALUES('Vinit', 'Software', 8.7);
+INSERT INTO student(name, major, gpa) VALUES('Abhishek', 'Data Science', 9.1);
+
+
+UPDATE student
+SET major='compt'
+WHERE student_id=4 OR gpa= 9.8 OR major='comp';
+
+UPDATE student
+SET major = 'Data Science';
+
+// Delete

@@ -1,0 +1,13 @@
+
+# Approach 1
+SELECT ep.name as employee 
+FROM employee as ep
+Join employee as ep2
+ON ep.managerid=ep2.id
+where ep.salary>ep2.salary;
+
+
+# Approach 2
+SELECT ep.name as employee 
+FROM employee as ep, employee as ep2
+where ep.managerid=ep2.id AND ep.salary>ep2.salary;

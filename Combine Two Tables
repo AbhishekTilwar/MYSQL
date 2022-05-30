@@ -1,0 +1,6 @@
+#Combine Two Tables
+
+SELECT ps.firstName, ps.lastName, ad.city, ad.state 
+from Address as ad
+RIGHT JOIN Person as ps
+ON ps.personid= ad.personid;

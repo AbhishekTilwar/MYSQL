@@ -1,0 +1,100 @@
+DROP TABLE COUNTRY;
+DROP TABLE CITY;
+
+CREATE TABLE COUNTRY(
+    id INT AUTO_INCREMENT,
+    name VARCHAR(10),
+    population INT,
+    area INT,
+    PRIMARY KEY(id)
+);
+
+CREATE TABLE CITY(
+    id INT AUTO_INCREMENT,
+    name VARCHAR(10),
+    country_id INT,
+    population INT,
+    rating INT,
+    PRIMARY KEY(id)
+);
+
+/*INSERTING DATA INTO TABLES*/
+INSERT INTO COUNTRY VALUES(1,"France", 66600000, 640680);
+INSERT INTO COUNTRY(name, population, area) VALUES("Germany", 80700000, 357000);
+
+INSERT INTO CITY VALUES(1,"Paris", 1, 2243000, 5);
+INSERT INTO CITY(name, country_id, population, rating) VALUES("Berlin", 2, 3460000, 3);
+
+/*QUERYING SINGLE TABLE*/
+SELECT*FROM COUNTRY;
+SELECT*FROM CITY;
+
+SELECT id, name
+FROM CITY;
+
+SELECT name
+FROM city
+ORDER BY rating ASC;
+
+SELECT name
+FROM city
+ORDER BY rating DESC;
+
+/*ALIASES*/
+
+SELECT name as city_name
+FROM CITY;
+
+SELECT ci.name, co.name
+FROM CITY AS ci
+JOIN COUNTRY AS co
+ ON ci.country_id=co.id;
+
+
+SELECT name
+FROM city
+WHERE NOT name='paris' AND name!='  Warsaw';
+
+/*TEXT OPERATORS*/
+ SELECT name
+ FROM CITY
+ WHERE name LIKE 'B%'
+    OR name LIKE '%n';
+
+SELECT name
+FROM COUNTRY
+WHERE name LIKE '_ermany';
+
+/*OTHER OPERATORS*/
+
+SELECT name
+FROM city
+WHERE Population BETWEEN 3000000 AND 5000000;
+
+SELECT name
+FROM city
+WHERE country_id IN (1,4,7,5);
+
+/*QUERYING MULTIPLE TABLE*/
+
+/*INNER JOIN*/
+
+INSERT INTO CITY(id, name, country_id) VALUES(3, "Warsaw", 4);
+
+SELECT ci.rating, ci.name as city_name, co.name
+FROM city as ci
+ INNER JOIN country as co
+ ON ci.country_id=co.id;
+
+
+SELECT ci.rating, ci.name as city_name, co.name
+FROM city as ci
+ LEFT JOIN country as co
+ ON ci.country_id=co.id;
+
+INSERT INTO COUNTRY(id, name) VALUES(3, "Greece");
+
+SELECT ci.rating, ci.name as city_name, co.name
+FROM city as ci
+ RIGHT JOIN country as co
+ ON ci.country_id=co.id;
